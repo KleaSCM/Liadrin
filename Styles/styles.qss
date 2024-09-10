@@ -16,3 +16,13 @@ QListWidget {
     border-radius: 8px;
     padding: 10px;
 }
+QListWidget::item {
+    padding: 10px;
+    font-size: 16px;
+    color: #007bff; /* Blue for category text */
+}
+QListWidget::item:selected {
+    background-color: #007bff;
+    color: white; /* White text when selected */
+    border-radius: 6px;
+}
