@@ -26,3 +26,63 @@ QListWidget::item:selected {
     color: white; /* White text when selected */
     border-radius: 6px;
 }
+/* App grid layout styles */
+QWidget#appContainerWidget {
+    background-color: #f8f9fa;
+    padding: 20px; /* Spacing around app grid */
+}
+
+/* App card widget */
+QWidget#appCard {
+    background-color: #ffffff; /* White card background */
+    border: 1px solid #dcdcdc; /* Light grey border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 15px; /* Padding inside card */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
+    margin: 10px;
+    max-width: 150px; /* Limit card width */
+    text-align: center; /* Center content */
+}
+
+/* Hover effect for app cards */
+QWidget#appCard:hover {
+    background-color: #f0f8ff; /* Light blue background on hover */
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    border: 1px solid #007bff; /* Highlight border */
+}
+
+/* App icon inside the card */
+QLabel#appIcon {
+    margin-bottom: 10px;
+}
+
+/* App name styling */
+QLabel#appName {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333333; /* Darker grey for text */
+}
+
+/* Scroll bar customization */
+QScrollBar:vertical {
+    border: none;
+    background-color: #f8f9fa;
+    width: 12px;
+    margin: 20px 0 20px 0;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #007bff;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #0056b3;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    background: none;
+}
