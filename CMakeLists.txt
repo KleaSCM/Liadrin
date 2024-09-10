@@ -25,6 +25,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         ClickableWidget.h
         ClickableWidget.cpp
+        resources/icons/resources.qrc
+        resources/icons/Battle.net.jpg
+        resources/icons/code.jpg
+        Styles/styles.qss
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Liadrin APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

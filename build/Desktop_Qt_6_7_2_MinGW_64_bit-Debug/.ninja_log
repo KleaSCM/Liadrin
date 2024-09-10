@@ -1,0 +1,14 @@
+# ninja log v6
+493	3174	7476569596241968	CMakeFiles/Liadrin.dir/Liadrin_autogen/mocs_compilation.cpp.obj	aa01f8e878421201
+25	191	7476743252862722	C:/Users/Kliea/Documents/Development/Liadrin/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Liadrin_autogen/mocs_compilation.cpp	39e51416614846ce
+25	191	7476743252862722	Liadrin_autogen/timestamp	39e51416614846ce
+192	261	7476743255161256	C:/Users/Kliea/Documents/Development/Liadrin/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Liadrin_autogen/F5S6UDLBXB/qrc_resources.cpp	f5841fb8f20413a
+25	191	7476743252862722	Liadrin_autogen/mocs_compilation.cpp	39e51416614846ce
+261	2228	7476743255226295	CMakeFiles/Liadrin.dir/AppLauncher.cpp.obj	6a6683f7d590d7b8
+264	852	7476743255256384	CMakeFiles/Liadrin.dir/Liadrin_autogen/F5S6UDLBXB/qrc_resources.cpp.obj	ee95d02900bcdfd0
+25	191	7476743252862722	C:/Users/Kliea/Documents/Development/Liadrin/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Liadrin_autogen/timestamp	39e51416614846ce
+501	2791	7476569596313145	CMakeFiles/Liadrin.dir/ClickableWidget.cpp.obj	2fe7d380ac408403
+496	3026	7476569596262691	CMakeFiles/Liadrin.dir/main.cpp.obj	7eb9c990a39fc4ca
+2228	2598	7476743274898505	Liadrin.exe	ed673cf7f554731f
+192	261	7476743255161256	Liadrin_autogen/F5S6UDLBXB/qrc_resources.cpp	f5841fb8f20413a
+4	744	7476749472222557	build.ninja	302672bb44baf1a3

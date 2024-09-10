@@ -1,0 +1,6 @@
+/* General app layout and background */
+QMainWindow {
+    background-color: #f8f9fa; /* Light grey background */
+    color: #333333; /* Darker text for readability */
+    font-family: 'Segoe UI', sans-serif; /* Clean, modern font */
+}
