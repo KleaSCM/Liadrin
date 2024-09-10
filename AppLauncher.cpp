@@ -122,6 +122,73 @@ void AppLauncher::addAppCard(const QString &appName, const QString &iconPath, co
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // #include "AppLauncher.h"
 // #include "ui_AppLauncher.h"
 // #include "ClickableWidget.h"

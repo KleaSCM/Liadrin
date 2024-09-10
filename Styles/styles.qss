@@ -4,3 +4,15 @@ QMainWindow {
     color: #333333; /* Darker text for readability */
     font-family: 'Segoe UI', sans-serif; /* Clean, modern font */
 }
+/* Scroll area styles */
+QScrollArea {
+    border: none; /* Remove border */
+    background-color: #f8f9fa; /* Match background */
+}
+/* List styling (categories) */
+QListWidget {
+    background-color: #ffffff; /* White background for category list */
+    border: 1px solid #dcdcdc; /* Light border */
+    border-radius: 8px;
+    padding: 10px;
+}
