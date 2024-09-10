@@ -2,19 +2,19 @@
 QMainWindow {
     background-color: #121212; /* Dark background */
     color: #e0e0e0; /* Light text for readability */
-    font-family: 'Segoe UI', sans-serif; /* Clean, modern font */
+    font-family: 'Segoe UI', sans-serif;
 }
 
 /* Scroll area styles */
 QScrollArea {
-    border: none; /* Remove border */
-    background-color: #121212; /* Match background */
+    border: none;
+    background-color: #121212;
 }
 
 /* List styling (categories) */
 QListWidget {
-    background-color: #1e1e1e; /* Dark grey background for category list */
-    border: 1px solid #333333; /* Darker border */
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
     border-radius: 8px;
     padding: 10px;
 }
@@ -22,41 +22,40 @@ QListWidget {
 QListWidget::item {
     padding: 10px;
     font-size: 16px;
-    color: #1e90ff; /* Bright blue for category text */
+    color: #1e90ff;
 }
 
 QListWidget::item:selected {
     background-color: #1e90ff;
-    color: white; /* White text when selected */
+    color: white;
     border-radius: 6px;
 }
 
 /* App grid layout styles */
-QWidget#appContainerWidget {
+QWidget#gridLayoutWidget {
     background-color: #121212;
-    padding: 20px; /* Spacing around app grid */
+    padding: 20px;
 }
 
 /* App card widget */
 QWidget#appCard {
-    background-color: #1e1e1e; /* Dark card background */
-    border: 1px solid #333333; /* Dark grey border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
-    padding: 15px; /* Padding inside card */
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; /* Smooth hover effects */
+    background-color: #1e1e1e;
+    border: 2px solid #333333; /* Light grey border */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px;
     margin: 10px;
-    max-width: 150px; /* Limit card width */
-    text-align: center; /* Center content */
-    position: relative; /* For positioning the hover effect */
+    max-width: 150px;
+    text-align: center;
+    position: relative; /* For positioning hover effect */
 }
 
 /* Hover effect for app cards */
 QWidget#appCard:hover {
-    background-color: #2c2c2c; /* Slightly lighter dark grey on hover */
-    transform: translateY(-10px); /* Slight lift on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
-    border: 1px solid #1e90ff; /* Highlight border */
+    background-color: #2c2c2c;
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    border: 2px solid #1e90ff;
 }
 
 /* Right-hand side hover effect */
@@ -65,23 +64,24 @@ QWidget#appCard:hover::after {
     position: absolute;
     top: 0;
     right: 0;
-    width: 10px; /* Width of the hover effect */
+    width: 6px;
     height: 100%;
-    background-color: rgba(30, 144, 255, 0.5); /* Semi-transparent blue */
-    border-radius: 0 10px 10px 0; /* Rounded corners on the right side */
-    z-index: 1; /* Ensure it is above other content */
+    background-color: rgba(30, 144, 255, 0.5);
+    border-radius: 0 10px 10px 0;
+    z-index: 1;
 }
 
 /* App icon inside the card */
 QLabel#appIcon {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 /* App name styling */
 QLabel#appName {
     font-weight: bold;
     font-size: 14px;
-    color: #e0e0e0; /* Light grey for text */
+    color: #e0e0e0;
+    margin-top: 5px;
 }
 
 /* Scroll bar customization */
@@ -89,7 +89,7 @@ QScrollBar:vertical {
     border: none;
     background-color: #121212;
     width: 12px;
-    margin: 20px 0 20px 0;
+    margin: 20px 0;
 }
 
 QScrollBar::handle:vertical {

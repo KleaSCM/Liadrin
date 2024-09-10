@@ -8,6 +8,7 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QLabel>
+#include <QTextEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class AppLauncher; }
@@ -27,11 +28,12 @@ private slots:
 
 private:
     Ui::AppLauncher *ui;
+    QGridLayout *appGridLayout;
+    QTextEdit *notepad; // Declare QTextEdit member
+
     void populateCategories();
     void populateApps(const QString &category);
     void addAppCard(const QString &appName, const QString &iconPath, const QString &appPath);
-
-    QGridLayout *appGridLayout;
 };
 
 #endif // APPLAUNCHER_H

@@ -1,75 +1,91 @@
-#include "AppLauncher.h"
-#include "ui_AppLauncher.h"
-#include "ClickableWidget.h"
+#include "AppLauncher.h" // Include the header file for the AppLauncher class
+#include "ui_AppLauncher.h" // Include the UI definitions
+#include "ClickableWidget.h" // Include the ClickableWidget class for interactive app cards
 
-#include <QVBoxLayout>
-#include <QPixmap>
-#include <QProcess>
-#include <QMessageBox>
+#include <QVBoxLayout> // Include QVBoxLayout for vertical layout management
+#include <QPixmap> // Include QPixmap for handling image files
+#include <QProcess> // Include QProcess for launching external applications
+#include <QMessageBox> // Include QMessageBox for showing warning messages
 
-AppLauncher::AppLauncher(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::AppLauncher),
-    appGridLayout(new QGridLayout)
+                                                                                                                                     // Constructor for AppLauncher
+                                                                                                                                     AppLauncher::AppLauncher(QWidget *parent) :
+    QMainWindow(parent), // Initialize the base QMainWindow class
+ui(new Ui::AppLauncher), // Create a new instance of the UI class
+appGridLayout(new QGridLayout), // Initialize a new QGridLayout for the app grid
+notepad(new QTextEdit) // Initialize QTextEdit for the notepad feature
 {
-    ui->setupUi(this);
+    ui->setupUi(this); // Set up the user interface
 
     // Set up the central widget and layout
-    QWidget *centralWidget = new QWidget;
-    setCentralWidget(centralWidget);
-    QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
+    QWidget *centralWidget = new QWidget; // Create a central widget
+    setCentralWidget(centralWidget); // Set the central widget for the main window
+    QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget); // Create a horizontal layout for the central widget
 
     // Create and configure the category list
-    QListWidget *categoryList = new QListWidget;
-    mainLayout->addWidget(categoryList);
-    ui->categoryList = categoryList;
+    QListWidget *categoryList = new QListWidget; // Create a list widget for categories
+    mainLayout->addWidget(categoryList); // Add the category list to the main layout
+    ui->categoryList = categoryList; // Assign the category list to the UI
 
     // Create and configure the scroll area for apps
-    QWidget *appContainerWidget = new QWidget;
-    appContainerWidget->setLayout(appGridLayout);
-    QScrollArea *scrollArea = new QScrollArea;
-    scrollArea->setWidgetResizable(true);
-    scrollArea->setWidget(appContainerWidget);
-    mainLayout->addWidget(scrollArea);
+    QWidget *appContainerWidget = new QWidget; // Create a widget to contain the app grid
+    appContainerWidget->setLayout(appGridLayout); // Set the grid layout for the container widget
+    QScrollArea *scrollArea = new QScrollArea; // Create a scroll area to make the app grid scrollable
+    scrollArea->setWidgetResizable(true); // Make the scroll area resize with the content
+    scrollArea->setWidget(appContainerWidget); // Set the app container widget as the scroll area’s widget
+    mainLayout->addWidget(scrollArea); // Add the scroll area to the main layout
 
-    connect(ui->categoryList, &QListWidget::currentTextChanged, this, &AppLauncher::onCategoryChanged);
-    connect(ui->searchButton, &QPushButton::clicked, this, &AppLauncher::onSearch);
+    // Create and configure the notepad area
+    notepad->setPlaceholderText("Type your notes here..."); // Set placeholder text for the notepad
+    notepad->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // Allow the notepad to expand with the layout
+    mainLayout->addWidget(notepad); // Add the notepad to the main layout
 
-    populateCategories();
+    // Connect signals to slots
+    connect(ui->categoryList, &QListWidget::currentTextChanged, this, &AppLauncher::onCategoryChanged); // Connect category change to slot
+    connect(ui->searchButton, &QPushButton::clicked, this, &AppLauncher::onSearch); // Connect search button click to slot
+
+    populateCategories(); // Populate the category list with initial values
 }
 
+// Destructor for AppLauncher
 AppLauncher::~AppLauncher() {
-    delete ui;
-    delete appGridLayout;
+    delete ui; // Clean up the UI instance
+    delete appGridLayout; // Clean up the grid layout
+    delete notepad; // Clean up the notepad
 }
 
+// Slot for handling category changes
 void AppLauncher::onCategoryChanged() {
-    QString selectedCategory = ui->categoryList->currentItem()->text();
-    populateApps(selectedCategory);
+    QString selectedCategory = ui->categoryList->currentItem()->text(); // Get the selected category
+    populateApps(selectedCategory); // Populate the app grid based on the selected category
 }
 
+// Slot for handling search button clicks
 void AppLauncher::onSearch() {
-    // Implement search functionality
+    // Implement search functionality (currently a placeholder)
 }
 
+// Slot for handling app clicks
 void AppLauncher::onAppClicked(const QString &appPath) {
-    if (!QProcess::startDetached(appPath)) {
-        QMessageBox::warning(this, "Launch Failed", "Could not launch application.");
+    if (!QProcess::startDetached(appPath)) { // Attempt to start the application
+        QMessageBox::warning(this, "Launch Failed", "Could not launch application."); // Show a warning message if it fails
     }
 }
 
+// Method to populate the category list
 void AppLauncher::populateCategories() {
-    QStringList categories = {"Games", "Development", "Office", "Web", "Tools"};
-    ui->categoryList->addItems(categories);
+    QStringList categories = {"Games", "Development", "Office", "Web", "Tools"}; // Define the categories
+    ui->categoryList->addItems(categories); // Add categories to the list widget
 }
 
+// Method to populate the app grid based on the selected category
 void AppLauncher::populateApps(const QString &category) {
     QLayoutItem *item;
-    while ((item = appGridLayout->takeAt(0))) {
-        delete item->widget();
-        delete item;
+    while ((item = appGridLayout->takeAt(0))) { // Remove and delete existing widgets from the grid
+        delete item->widget(); // Delete the widget
+        delete item; // Delete the layout item
     }
 
+    // Populate apps based on the selected category
     if (category == "Games") {
         addAppCard("Diablo IV", "C:/Users/Kliea/Documents/Development/Liadrin/resources/icons/diablo_iv.png", "C:/Program Files (x86)/Diablo IV/Diablo IV.exe");
         addAppCard("Path of Exile", "C:/Users/Kliea/Documents/Development/Liadrin/resources/icons/PathOfExile.png", "C:/Program Files (x86)/Steam/steamapps/common/Path of Exile/PathOfExile_x64Steam.exe");
@@ -93,41 +109,34 @@ void AppLauncher::populateApps(const QString &category) {
     }
 }
 
+// Method to add an application card to the grid
 void AppLauncher::addAppCard(const QString &appName, const QString &iconPath, const QString &appPath) {
-    ClickableWidget *cardWidget = new ClickableWidget;
-    QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget);
+    ClickableWidget *cardWidget = new ClickableWidget; // Create a new ClickableWidget for the app card
+    QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget); // Create a vertical layout for the card
 
-    QLabel *iconLabel = new QLabel;
-    if (QPixmap(iconPath).isNull()) {
-        iconLabel->setPixmap(QPixmap("C:/Users/Kliea/Documents/Development/Liadrin/resources/icons/placeholder.png").scaled(64, 64, Qt::KeepAspectRatio));
+    QLabel *iconLabel = new QLabel; // Create a label for the app icon
+    if (QPixmap(iconPath).isNull()) { // Check if the icon path is invalid
+        iconLabel->setPixmap(QPixmap("C:/Users/Kliea/Documents/Development/Liadrin/resources/icons/placeholder.png").scaled(64, 64, Qt::KeepAspectRatio)); // Use a placeholder icon
     } else {
-        iconLabel->setPixmap(QPixmap(iconPath).scaled(64, 64, Qt::KeepAspectRatio));
+        iconLabel->setPixmap(QPixmap(iconPath).scaled(64, 64, Qt::KeepAspectRatio)); // Set the actual app icon
     }
 
-    QLabel *nameLabel = new QLabel(appName);
+    QLabel *nameLabel = new QLabel(appName); // Create a label for the app name
 
-    cardLayout->addWidget(iconLabel);
-    cardLayout->addWidget(nameLabel);
-    cardWidget->setLayout(cardLayout);
+    cardLayout->addWidget(iconLabel); // Add the icon label to the card's layout
+    cardLayout->addWidget(nameLabel); // Add the name label to the card's layout
+    cardWidget->setLayout(cardLayout); // Set the layout for the card widget
 
-    int row = appGridLayout->count() / 5;
-    int col = appGridLayout->count() % 5;
-    appGridLayout->addWidget(cardWidget, row, col);
+    // Determine the position in the grid for the new card
+    int row = appGridLayout->count() / 5; // Calculate the row position (5 apps per row)
+    int col = appGridLayout->count() % 5; // Calculate the column position
+    appGridLayout->addWidget(cardWidget, row, col); // Add the card widget to the grid layout
 
+    // Connect the card widget's click signal to the slot that handles app launching
     connect(cardWidget, &ClickableWidget::clicked, [this, appPath]() {
-        onAppClicked(appPath);
+        onAppClicked(appPath); // Launch the application when the card is clicked
     });
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
